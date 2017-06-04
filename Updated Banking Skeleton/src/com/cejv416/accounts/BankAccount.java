@@ -57,8 +57,8 @@ public abstract class BankAccount {
         int temp3 = money.getNumberOfWithdrawals();
 
         money.setCurrentBalance(temp1.add(withdrawal));
-        money.setTotalDeposits(temp2.add(withdrawal));
-        money.setNumberOfDeposits(temp3 + 1);
+        money.setTotalWithdrawals(temp2.add(withdrawal));
+        money.setNumberOfWithdrawals(temp3 + 1);
 
         return true;
     }
