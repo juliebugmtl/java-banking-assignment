@@ -27,8 +27,17 @@ public class test {
 
     private void testCheckingOverdrawn() {
         
-        CheckingAccount ca = new CheckingAccount(new BigDecimal("50.0"), new BigDecimal ("0.05"));
+        CheckingAccount ca = new CheckingAccount(new BigDecimal("10.0"), new BigDecimal ("0.05"));
         ca.withdrawal(new BigDecimal("55.0"));
+        System.out.println(ca.toString());
+        
+    }
+
+    private void testLotsOfChecking() {
+        
+        CheckingAccount ca = new CheckingAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
+        ca.withdrawal(new BigDecimal("55.0"));
+        ca.withdrawal(new BigDecimal("35."));
         System.out.println(ca.toString());
         
     }
@@ -38,7 +47,8 @@ public class test {
         
         //testCheckingDeposit();
         //testCheckingWithdraw();
-        testCheckingOverdrawn();
+        //testCheckingOverdrawn();
+        testLotsOfChecking();
         
     }
     
