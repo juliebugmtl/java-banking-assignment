@@ -25,7 +25,7 @@ public class MainApp {
      */
     public MainApp() {
         savings = new SavingsAccount(new BigDecimal("50.0"), new BigDecimal(".05"));
-        checking = new CheckingAccount(new BigDecimal(100.0), new BigDecimal(.01));
+        checking = new CheckingAccount(new BigDecimal(100.0), new BigDecimal(".01"));
         theBank = new TheBank(savings, checking);
         userInterface = new BankUserInterface(theBank);
     }

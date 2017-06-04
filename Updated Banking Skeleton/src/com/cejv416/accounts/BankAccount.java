@@ -98,8 +98,8 @@ public abstract class BankAccount {
     public BankBean doMonthlyReport() {
         // do stuff
         // calculate the interest
-        BankBean reportBean = new BankBean();
         calculateInterest();
+        BankBean reportBean = new BankBean();
         reportBean.setCurrentBalance(money.getCurrentBalance());
         // copy every field
 

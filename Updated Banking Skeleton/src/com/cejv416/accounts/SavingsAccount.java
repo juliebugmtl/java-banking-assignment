@@ -27,7 +27,25 @@ public class SavingsAccount extends BankAccount {
      */
     @Override
     public void makeDeposit(BigDecimal deposit) {
-        // do savings stuff
+        
+        // Prepare to check if account is active (over $25)
+        BigDecimal temp1 = money.getCurrentBalance();
+        BigDecimal temp2 = new BigDecimal(25.0);
+        
+        // add to the current balance
+        
+        BigDecimal temp3 = temp1.add(deposit);
+        money.setCurrentBalance(temp3);
+
+        // add to the total for deposits
+        BigDecimal temp4 = money.getTotalDeposits();
+        BigDecimal temp5 = temp4.add(deposit);
+        money.setTotalDeposits(temp5);
+
+        // add to the counter/number of deposits
+        int temp6 = money.getNumberOfDeposits();
+        money.setNumberOfDeposits(temp6 + 1);
+        
     }
 
     /**
