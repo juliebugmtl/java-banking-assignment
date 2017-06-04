@@ -69,6 +69,27 @@ public abstract class BankAccount {
     private void calculateInterest() {
         // As part of a report calculate the interest to be added this month
 
+        // Specify annual interest rate and months in year
+        BigDecimal ai = new BigDecimal(0.01);
+        BigDecimal months = new BigDecimal(12.0);
+        
+        // Calculate monthly interest rate and store as temp1        
+        BigDecimal temp1 = ai.divide(months, 5, BigDecimal.ROUND_HALF_EVEN);
+        
+        // Calculate monthly interest
+        BigDecimal temp2 = money.getCurrentBalance();
+        BigDecimal temp3 = temp2.multiply(temp1);
+        
+        // Add monthly interest to balance
+        BigDecimal temp4 = temp2.add(temp3);
+              
+        // Rounding
+        BigDecimal temp5 = temp4.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        
+        // Set new balance        
+        money.setCurrentBalance(temp5);
+        
+        
     }
 
     /**
@@ -77,8 +98,8 @@ public abstract class BankAccount {
     public BankBean doMonthlyReport() {
         // do stuff
         // calculate the interest
-
         BankBean reportBean = new BankBean();
+        calculateInterest();
         reportBean.setCurrentBalance(money.getCurrentBalance());
         // copy every field
 
