@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * This class simulates a private bank that has just two accounts, all actions
  * must pass through this class
  *
- * @author Your Name
+ * @author Julie Martin
  * @version 0.1
  */
 public class TheBank {

@@ -32,7 +32,7 @@ public class CheckingAccount extends BankAccount {
     public boolean withdrawal(BigDecimal withdrawal) {
         
         // Set penalty fee
-        BigDecimal penalty = (new BigDecimal("25.0"));
+        BigDecimal penalty = (new BigDecimal("15.0"));
 
         // do checking stuff
         
@@ -44,19 +44,25 @@ public class CheckingAccount extends BankAccount {
             
         money.setCurrentBalance(temp1.subtract(penalty));    
             
-        } 
+        } else {
         
         // subtract from the current balance
+        
+        money.setCurrentBalance(temp3);
+        
         // add to the total for withdrawals
+        
+        BigDecimal temp4 = money.getTotalWithdrawals();
+        money.setTotalWithdrawals(temp4.add(withdrawal));
+        
         // add to the counter/number of deposits
         
         
-        BigDecimal temp4 = money.getTotalWithdrawals();
         int temp5 = money.getNumberOfWithdrawals();
 
-        money.setCurrentBalance(temp1.subtract(withdrawal));
-        money.setTotalWithdrawals(temp4.add(withdrawal));
+        //money.setCurrentBalance(temp1.subtract(withdrawal));
         money.setNumberOfWithdrawals(temp5 + 1);
+        }
         
         
         return true;

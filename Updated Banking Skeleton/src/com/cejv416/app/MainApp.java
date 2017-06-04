@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * The objects used by the program are created here and then the user interface
  * takes over running the program
  *
- * @author Your Name
+ * @author Julie Martin
  * @version 0.1
  */
 public class MainApp {
