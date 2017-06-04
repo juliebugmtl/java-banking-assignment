@@ -36,8 +36,12 @@ public class test {
     private void testLotsOfChecking() {
         
         CheckingAccount ca = new CheckingAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
-        ca.withdrawal(new BigDecimal("55.0"));
-        ca.withdrawal(new BigDecimal("35."));
+        ca.withdrawal(new BigDecimal("15.0"));
+        ca.withdrawal(new BigDecimal("15.0"));
+        ca.withdrawal(new BigDecimal("15.0"));
+        ca.withdrawal(new BigDecimal("15.0"));
+        ca.withdrawal(new BigDecimal("15.0"));
+        ca.doMonthlyReport();
         System.out.println(ca.toString());
         
     }

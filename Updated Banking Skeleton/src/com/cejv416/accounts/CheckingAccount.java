@@ -89,10 +89,13 @@ public class CheckingAccount extends BankAccount {
         // Subtract withdrawal fees
         BigDecimal temp7 = temp6.subtract(temp5);
         
+        // Rounding
+        
+        BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        
         // Set new balance        
-        money.setCurrentBalance(temp7);
-        
-        
+        money.setCurrentBalance(temp8);
+                
         BankBean reportBean = super.doMonthlyReport();
         return reportBean;
 
