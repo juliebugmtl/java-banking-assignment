@@ -91,7 +91,7 @@ public abstract class BankAccount {
     /**
      *
      */
-    private void reset() {
+    void reset() {
         // reset the values at the end of the month for money
     }
 
