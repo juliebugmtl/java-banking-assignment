@@ -69,8 +69,8 @@ public abstract class BankAccount {
     private void calculateInterest() {
         // As part of a report calculate the interest to be added this month
 
-        // Specify annual interest rate and months in year
-        BigDecimal ai = new BigDecimal(0.01);
+        // Fetch annual interest rate and months in year for later monthly interest rate calculation
+        BigDecimal ai = money.getAnnualInterestRate();
         BigDecimal months = new BigDecimal(12.0);
         
         // Calculate monthly interest rate and store as temp1        
@@ -88,7 +88,6 @@ public abstract class BankAccount {
         
         // Set new balance        
         money.setCurrentBalance(temp5);
-        
         
     }
 

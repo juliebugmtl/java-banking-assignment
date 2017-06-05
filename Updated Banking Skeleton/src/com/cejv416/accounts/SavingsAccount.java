@@ -29,10 +29,17 @@ public class SavingsAccount extends BankAccount {
     public void makeDeposit(BigDecimal deposit) {
         
         // Prepare to check if account is active (over $25)
-        BigDecimal temp1 = money.getCurrentBalance();
-        BigDecimal temp2 = new BigDecimal(25.0);
+        // BigDecimal temp1 = money.getCurrentBalance();
+        // BigDecimal temp2 = new BigDecimal(25.0);
         
-        super.withdrawal(deposit);
+        //super.makeDeposit(deposit);
+        BigDecimal temp3 = money.getCurrentBalance();
+        BigDecimal temp4 = money.getTotalDeposits();
+        int temp5 = money.getNumberOfDeposits();
+
+        money.setCurrentBalance(temp3.add(deposit));
+        money.setTotalDeposits(temp4.add(deposit));
+        money.setNumberOfDeposits(temp5 + 1);
         
     }
 
@@ -54,22 +61,35 @@ public class SavingsAccount extends BankAccount {
         
         // If logic for account activity
         
-        if ( active == 0 ) {
+        switch(active) {
             
-            super.withdrawal(withdrawal);
-        
+            case 0 :
+                super.withdrawal(withdrawal);
+                break;
+            case 1 :
+                super.withdrawal(withdrawal);
+                break;
+            case -1: 
+                System.out.println("Cannot withdraw, account is inactive.");
+                break;
         }
-            
-      else if ( active == 1 ){
-            
-            super.withdrawal(withdrawal);
-        
-        }
-      
-      else if ( active == -1 )
-         System.out.println("Cannot withdraw, account is inactive.");
-           
-        return true;
+//        
+//        if ( active == 0 ) {
+//            
+//            super.withdrawal(withdrawal);
+//        
+//        }
+//            
+//      else if ( active == 1 ){
+//            
+//            super.withdrawal(withdrawal);
+//        
+//        }
+//      
+//      else if ( active == -1 )
+//         System.out.println("Cannot withdraw, account is inactive.");
+//        // Should go back to menu?   
+        return false;
     }
 
     /**

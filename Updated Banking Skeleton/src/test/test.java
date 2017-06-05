@@ -47,11 +47,18 @@ public class test {
         
     }
     
-        private void testSavingsDeposit() {
+    private void testSavingsDeposit() {
         
         SavingsAccount sa = new SavingsAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
         sa.makeDeposit(new BigDecimal("10.0"));
-        sa.doMonthlyReport();
+        System.out.println(sa.toString());
+        
+    }
+
+    private void testSavingsWithdraw() {
+        
+        SavingsAccount sa = new SavingsAccount(new BigDecimal("10.0"), new BigDecimal ("0.05"));
+        sa.withdrawal(new BigDecimal("5.0"));
         System.out.println(sa.toString());
         
     }
@@ -63,9 +70,8 @@ public class test {
         //testCheckingWithdraw();
         //testCheckingOverdrawn();
         //testLotsOfChecking();
-        
-        testSavingsDeposit();
-        
+        //testSavingsDeposit();
+        testSavingsWithdraw();
     }
     
     public static void main(String[] args) {
