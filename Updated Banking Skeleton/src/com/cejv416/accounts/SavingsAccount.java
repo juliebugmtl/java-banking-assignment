@@ -66,22 +66,8 @@ public class SavingsAccount extends BankAccount {
                 System.out.println("Cannot withdraw, account is inactive.");
                 break;
         }
-//        
-//        if ( active == 0 ) {
-//            
-//            super.withdrawal(withdrawal);
-//        
-//        }
-//            
-//      else if ( active == 1 ){
-//            
-//            super.withdrawal(withdrawal);
-//        
-//        }
-//      
-//      else if ( active == -1 )
-//         System.out.println("Cannot withdraw, account is inactive.");
-//        // Should go back to menu?   
+
+        // Should go back to menu?   
         return false;
     }
 
@@ -91,8 +77,43 @@ public class SavingsAccount extends BankAccount {
      */
     @Override
     public BankBean doMonthlyReport() {
-        // do savings stuff
-
+        
+        // Service Charge for withdrawals above 4 specified
+        BigDecimal sc = new BigDecimal(1.0);
+                
+        // Get the current balance
+        BigDecimal temp1 = money.getCurrentBalance();
+        
+        // Get the number of withdrawals, check if over 4 and, if so, add fees
+        int temp3 = money.getNumberOfWithdrawals();
+        int temp4 = temp3 - 4;
+        int temp5 = temp4 * 1;
+        
+        // Convert to BigDecimal because Math        
+        BigDecimal temp6 = new BigDecimal(temp5);
+               
+        if (0 < temp4) {
+            
+            // Subtract withdrawal fees
+            BigDecimal temp7 = temp1.subtract(temp6);
+            
+            // Rounding
+            BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            
+            // Set new balance
+            money.setCurrentBalance(temp8);
+            
+        } else {
+        
+        // Rounding
+        
+        BigDecimal temp7 = new BigDecimal(temp3);
+        BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        
+        // Set new balance        
+        money.setCurrentBalance(temp8);
+        }
+                
         BankBean reportBean = super.doMonthlyReport();
         return reportBean;
 

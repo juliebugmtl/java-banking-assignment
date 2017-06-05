@@ -95,7 +95,7 @@ public abstract class BankAccount {
      *
      */
     public BankBean doMonthlyReport() {
-        // do stuff
+
         // calculate the interest
         calculateInterest();
         BankBean reportBean = new BankBean();
