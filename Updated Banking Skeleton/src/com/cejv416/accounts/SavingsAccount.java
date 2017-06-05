@@ -32,15 +32,8 @@ public class SavingsAccount extends BankAccount {
         // BigDecimal temp1 = money.getCurrentBalance();
         // BigDecimal temp2 = new BigDecimal(25.0);
         
-        //super.makeDeposit(deposit);
-        BigDecimal temp3 = money.getCurrentBalance();
-        BigDecimal temp4 = money.getTotalDeposits();
-        int temp5 = money.getNumberOfDeposits();
+        super.makeDeposit(deposit);
 
-        money.setCurrentBalance(temp3.add(deposit));
-        money.setTotalDeposits(temp4.add(deposit));
-        money.setNumberOfDeposits(temp5 + 1);
-        
     }
 
     /**
@@ -104,4 +97,9 @@ public class SavingsAccount extends BankAccount {
         return reportBean;
 
     }
+    
+        public String toString() {
+        return money.toString();
+    }
+    
 }
