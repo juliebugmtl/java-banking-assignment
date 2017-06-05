@@ -1,6 +1,7 @@
 package test;
 
 import com.cejv416.accounts.CheckingAccount;
+import com.cejv416.accounts.SavingsAccount;
 import java.math.BigDecimal;
 
 /**
@@ -46,14 +47,31 @@ public class test {
         
     }
     
+    private void testSavingsDeposit() {
+        
+        SavingsAccount sa = new SavingsAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
+        sa.makeDeposit(new BigDecimal("10.0"));
+        System.out.println(sa.toString());
+        
+    }
+
+    private void testSavingsWithdraw() {
+        
+        SavingsAccount sa = new SavingsAccount(new BigDecimal("10.0"), new BigDecimal ("0.05"));
+        sa.withdrawal(new BigDecimal("5.0"));
+        System.out.println(sa.toString());
+        
+    }
+    
     
     public void perform() {
         
         //testCheckingDeposit();
         //testCheckingWithdraw();
         //testCheckingOverdrawn();
-        testLotsOfChecking();
-        
+        //testLotsOfChecking();
+        //testSavingsDeposit();
+        testSavingsWithdraw();
     }
     
     public static void main(String[] args) {

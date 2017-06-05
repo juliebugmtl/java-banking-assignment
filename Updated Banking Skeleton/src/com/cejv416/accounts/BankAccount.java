@@ -56,7 +56,7 @@ public abstract class BankAccount {
         BigDecimal temp2 = money.getTotalWithdrawals();
         int temp3 = money.getNumberOfWithdrawals();
 
-        money.setCurrentBalance(temp1.add(withdrawal));
+        money.setCurrentBalance(temp1.subtract(withdrawal));
         money.setTotalWithdrawals(temp2.add(withdrawal));
         money.setNumberOfWithdrawals(temp3 + 1);
 
@@ -69,8 +69,8 @@ public abstract class BankAccount {
     private void calculateInterest() {
         // As part of a report calculate the interest to be added this month
 
-        // Specify annual interest rate and months in year
-        BigDecimal ai = new BigDecimal(0.01);
+        // Fetch annual interest rate and months in year for later monthly interest rate calculation
+        BigDecimal ai = money.getAnnualInterestRate();
         BigDecimal months = new BigDecimal(12.0);
         
         // Calculate monthly interest rate and store as temp1        
@@ -89,7 +89,6 @@ public abstract class BankAccount {
         // Set new balance        
         money.setCurrentBalance(temp5);
         
-        
     }
 
     /**
@@ -98,8 +97,8 @@ public abstract class BankAccount {
     public BankBean doMonthlyReport() {
         // do stuff
         // calculate the interest
-        BankBean reportBean = new BankBean();
         calculateInterest();
+        BankBean reportBean = new BankBean();
         reportBean.setCurrentBalance(money.getCurrentBalance());
         // copy every field
 
