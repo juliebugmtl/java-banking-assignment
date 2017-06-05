@@ -32,19 +32,7 @@ public class SavingsAccount extends BankAccount {
         BigDecimal temp1 = money.getCurrentBalance();
         BigDecimal temp2 = new BigDecimal(25.0);
         
-        // add to the current balance
-        
-        BigDecimal temp3 = temp1.add(deposit);
-        money.setCurrentBalance(temp3);
-
-        // add to the total for deposits
-        BigDecimal temp4 = money.getTotalDeposits();
-        BigDecimal temp5 = temp4.add(deposit);
-        money.setTotalDeposits(temp5);
-
-        // add to the counter/number of deposits
-        int temp6 = money.getNumberOfDeposits();
-        money.setNumberOfDeposits(temp6 + 1);
+        super.withdrawal(deposit);
         
     }
 
@@ -55,7 +43,32 @@ public class SavingsAccount extends BankAccount {
      */
     @Override
     public boolean withdrawal(BigDecimal withdrawal) {
-        // do savings stuff
+        
+        // Prepare to check if account is active (over $25)
+        BigDecimal temp1 = money.getCurrentBalance();
+        BigDecimal temp2 = new BigDecimal(25.0);
+        
+        // Create active conditions where 0 is equal, 1 is first value is greater, -1 is second value is greater
+        int active;
+        active = temp1.compareTo(temp2);
+        
+        // If logic for account activity
+        
+        if ( active == 0 ) {
+            
+            super.withdrawal(withdrawal);
+        
+        }
+            
+      else if ( active == 1 ){
+            
+            super.withdrawal(withdrawal);
+        
+        }
+      
+      else if ( active == -1 )
+         System.out.println("Cannot withdraw, account is inactive.");
+           
         return true;
     }
 

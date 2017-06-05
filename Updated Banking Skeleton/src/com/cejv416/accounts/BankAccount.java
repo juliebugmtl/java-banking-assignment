@@ -56,7 +56,7 @@ public abstract class BankAccount {
         BigDecimal temp2 = money.getTotalWithdrawals();
         int temp3 = money.getNumberOfWithdrawals();
 
-        money.setCurrentBalance(temp1.add(withdrawal));
+        money.setCurrentBalance(temp1.subtract(withdrawal));
         money.setTotalWithdrawals(temp2.add(withdrawal));
         money.setNumberOfWithdrawals(temp3 + 1);
 
