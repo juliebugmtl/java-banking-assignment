@@ -8,7 +8,7 @@ import com.juliemartin.menus.Menus;
 /**
  * This class simulates a private bank that has just two accounts
  *
- * @author Your Name
+ * @author Julie Martin
  * @version 0.1
  */
 public class BankUserInterface {

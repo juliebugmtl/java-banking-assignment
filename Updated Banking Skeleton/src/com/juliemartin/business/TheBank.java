@@ -4,6 +4,7 @@ import com.juliemartin.accounts.CheckingAccount;
 import com.juliemartin.accounts.SavingsAccount;
 import com.juliemartin.bean.BankBean;
 import java.math.BigDecimal;
+import java.util.Scanner;
 
 /**
  * This class simulates a private bank that has just two accounts, all actions
@@ -34,11 +35,31 @@ public class TheBank {
      *
      */
     public void doSavingsDeposit() {
-        BigDecimal input = null;
-        //System.out.println("doSavingsDeposit");
+
         // ask for the value
         // ask the user for input
-        savings.makeDeposit(input);
+        
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("doSavingsDeposit");
+        
+        double in = -1.0;
+            do {
+                System.out.print("Please enter amount of deposit: ");
+                if (sc.hasNext("\\d*\\.?\\d*") ) {
+                    in = sc.nextDouble();
+                }
+                if (in == -1.0) {
+                    System.out.println("Invalid input.");
+                }
+                sc.nextLine();
+            } while (in == -1.0);
+        
+            BigDecimal temp1 = new BigDecimal(in);
+            BigDecimal deposit = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            System.out.println("input " + deposit);
+        
+        savings.makeDeposit(deposit);
     }
 
     /**
@@ -53,7 +74,7 @@ public class TheBank {
      * @return
      */
     public BankBean doSavingsReport() {
-        System.out.println("doSavingsReport");
+        // Monthly Report
         return savings.doMonthlyReport();
     }
 
@@ -76,6 +97,7 @@ public class TheBank {
      * @return
      */
     public BankBean doCheckingReport() {
+        // Monthly Report
         return checking.doMonthlyReport();
 
     }
