@@ -91,17 +91,21 @@ public class SavingsAccount extends BankAccount {
         
         // Convert to BigDecimal because Math        
         BigDecimal temp6 = new BigDecimal(temp5);
-               
+        
         if (0 < temp4) {
             
             // Subtract withdrawal fees
             BigDecimal temp7 = temp1.subtract(temp6);
             
-            // Rounding
-            BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            // Round and set service charge
+            BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            money.setServiceCharge(temp8);
+            
+            // Rounding balance
+            BigDecimal temp9 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
             
             // Set new balance
-            money.setCurrentBalance(temp8);
+            money.setCurrentBalance(temp9);
             
         } else {
         

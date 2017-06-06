@@ -67,7 +67,10 @@ public class test {
     private void testSavingsWithdraw() {
         
         SavingsAccount sa = new SavingsAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
-        sa.withdrawal(new BigDecimal("70.0"));
+        sa.withdrawal(new BigDecimal("10.0"));
+        sa.withdrawal(new BigDecimal("10.0"));
+        sa.withdrawal(new BigDecimal("10.0"));
+        sa.withdrawal(new BigDecimal("10.0"));
         sa.withdrawal(new BigDecimal("10.0"));
         sa.withdrawal(new BigDecimal("10.0"));
         sa.doMonthlyReport();
