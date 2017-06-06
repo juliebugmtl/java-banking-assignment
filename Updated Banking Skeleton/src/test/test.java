@@ -1,8 +1,8 @@
 package test;
 
-import com.cejv416.accounts.CheckingAccount;
-import com.cejv416.accounts.SavingsAccount;
-import com.cejv416.accounts.BankAccount;
+import com.juliemartin.accounts.CheckingAccount;
+import com.juliemartin.accounts.SavingsAccount;
+import com.juliemartin.accounts.BankAccount;
 import java.math.BigDecimal;
 
 /**

@@ -1,4 +1,4 @@
-package com.cejv416.menus;
+package com.juliemartin.menus;
 
 import java.util.Scanner;
 

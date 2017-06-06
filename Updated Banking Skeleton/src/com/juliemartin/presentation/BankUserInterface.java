@@ -1,9 +1,9 @@
-package com.cejv416.presentation;
+package com.juliemartin.presentation;
 
-import com.cejv416.accounts.BankAccount;
-import com.cejv416.bean.BankBean;
-import com.cejv416.business.TheBank;
-import com.cejv416.menus.Menus;
+import com.juliemartin.accounts.BankAccount;
+import com.juliemartin.bean.BankBean;
+import com.juliemartin.business.TheBank;
+import com.juliemartin.menus.Menus;
 
 /**
  * This class simulates a private bank that has just two accounts

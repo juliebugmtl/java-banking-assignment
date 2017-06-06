@@ -1,4 +1,4 @@
-package com.cejv416.bean;
+package com.juliemartin.bean;
 
 import java.math.BigDecimal;
 

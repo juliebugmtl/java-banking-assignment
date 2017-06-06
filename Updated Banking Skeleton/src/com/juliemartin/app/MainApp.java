@@ -1,9 +1,9 @@
-package com.cejv416.app;
+package com.juliemartin.app;
 
-import com.cejv416.accounts.CheckingAccount;
-import com.cejv416.accounts.SavingsAccount;
-import com.cejv416.business.TheBank;
-import com.cejv416.presentation.BankUserInterface;
+import com.juliemartin.accounts.CheckingAccount;
+import com.juliemartin.accounts.SavingsAccount;
+import com.juliemartin.business.TheBank;
+import com.juliemartin.presentation.BankUserInterface;
 import java.math.BigDecimal;
 
 /**
