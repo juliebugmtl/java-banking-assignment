@@ -15,6 +15,7 @@ public class test {
         
         CheckingAccount ca = new CheckingAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
         ca.makeDeposit(new BigDecimal("10.0"));
+        ca.doMonthlyReport();
         System.out.println(ca.toString());
         
     }
@@ -22,7 +23,8 @@ public class test {
     private void testCheckingWithdraw() {
         
         CheckingAccount ca = new CheckingAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
-        ca.withdrawal(new BigDecimal("25.0"));
+        ca.withdrawal(new BigDecimal("20.0"));
+        ca.doMonthlyReport();
         System.out.println(ca.toString());
         
     }
@@ -80,13 +82,13 @@ public class test {
 
    public void perform() {
         
-        //testCheckingDeposit();
+        testCheckingDeposit();
         //testCheckingWithdraw();
         //testCheckingOverdrawn();
         //testLotsOfChecking();
         //testSavingsDeposit();
         //testSavingsWithdrawInactive();
-        testSavingsWithdraw();
+        //testSavingsWithdraw();
              
     }
     
