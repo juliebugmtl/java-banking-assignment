@@ -66,7 +66,7 @@ public abstract class BankAccount {
     /**
      *
      */
-    private void calculateInterest() {
+    protected void calculateInterest() {
         // As part of a report calculate the interest to be added this month
 
         // Fetch annual interest rate and months in year for later monthly interest rate calculation

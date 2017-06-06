@@ -47,16 +47,13 @@ public class CheckingAccount extends BankAccount {
         } else {
         
         // subtract from the current balance
-        
         money.setCurrentBalance(temp3);
         
         // add to the total for withdrawals
-        
         BigDecimal temp4 = money.getTotalWithdrawals();
         money.setTotalWithdrawals(temp4.add(withdrawal));
         
         // add to the counter/number of deposits
-        
         int temp5 = money.getNumberOfWithdrawals();
 
         //money.setCurrentBalance(temp1.subtract(withdrawal));
@@ -90,12 +87,11 @@ public class CheckingAccount extends BankAccount {
         BigDecimal temp7 = temp6.subtract(temp5);
         
         // Rounding
-        
         BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
         
         // Set new balance        
         money.setCurrentBalance(temp8);
-                
+        super.calculateInterest();
         BankBean reportBean = super.doMonthlyReport();
         return reportBean;
 
