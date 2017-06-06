@@ -28,10 +28,6 @@ public class SavingsAccount extends BankAccount {
     @Override
     public void makeDeposit(BigDecimal deposit) {
         
-        // Prepare to check if account is active (over $25)
-        // BigDecimal temp1 = money.getCurrentBalance();
-        // BigDecimal temp2 = new BigDecimal(25.0);
-        
         super.makeDeposit(deposit);
 
     }
