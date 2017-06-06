@@ -1,6 +1,6 @@
-package com.cejv416.accounts;
+package com.juliemartin.accounts;
 
-import com.cejv416.bean.BankBean;
+import com.juliemartin.bean.BankBean;
 import java.math.BigDecimal;
 
 /**

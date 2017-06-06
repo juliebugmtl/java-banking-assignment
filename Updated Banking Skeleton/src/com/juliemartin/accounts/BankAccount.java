@@ -1,6 +1,6 @@
-package com.cejv416.accounts;
+package com.juliemartin.accounts;
 
-import com.cejv416.bean.BankBean;
+import com.juliemartin.bean.BankBean;
 import java.math.BigDecimal;
 
 /**
@@ -95,7 +95,7 @@ public abstract class BankAccount {
      *
      */
     public BankBean doMonthlyReport() {
-        // do stuff
+
         // calculate the interest
         calculateInterest();
         BankBean reportBean = new BankBean();

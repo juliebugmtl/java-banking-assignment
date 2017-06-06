@@ -1,8 +1,8 @@
-package com.cejv416.business;
+package com.juliemartin.business;
 
-import com.cejv416.accounts.CheckingAccount;
-import com.cejv416.accounts.SavingsAccount;
-import com.cejv416.bean.BankBean;
+import com.juliemartin.accounts.CheckingAccount;
+import com.juliemartin.accounts.SavingsAccount;
+import com.juliemartin.bean.BankBean;
 import java.math.BigDecimal;
 
 /**

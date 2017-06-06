@@ -1,7 +1,8 @@
 package test;
 
-import com.cejv416.accounts.CheckingAccount;
-import com.cejv416.accounts.SavingsAccount;
+import com.juliemartin.accounts.CheckingAccount;
+import com.juliemartin.accounts.SavingsAccount;
+import com.juliemartin.accounts.BankAccount;
 import java.math.BigDecimal;
 
 /**
@@ -55,7 +56,7 @@ public class test {
         
     }
 
-    private void testSavingsWithdraw() {
+    private void testSavingsWithdrawInactive() {
         
         SavingsAccount sa = new SavingsAccount(new BigDecimal("10.0"), new BigDecimal ("0.05"));
         sa.withdrawal(new BigDecimal("5.0"));
@@ -63,15 +64,27 @@ public class test {
         
     }
     
-    
-    public void perform() {
+    private void testSavingsWithdraw() {
+        
+        SavingsAccount sa = new SavingsAccount(new BigDecimal("100.0"), new BigDecimal ("0.05"));
+        sa.withdrawal(new BigDecimal("70.0"));
+        sa.withdrawal(new BigDecimal("10.0"));
+        sa.withdrawal(new BigDecimal("10.0"));
+        sa.doMonthlyReport();
+        System.out.println(sa.toString());
+        
+    }
+
+   public void perform() {
         
         //testCheckingDeposit();
         //testCheckingWithdraw();
         //testCheckingOverdrawn();
         //testLotsOfChecking();
         //testSavingsDeposit();
+        //testSavingsWithdrawInactive();
         testSavingsWithdraw();
+             
     }
     
     public static void main(String[] args) {
