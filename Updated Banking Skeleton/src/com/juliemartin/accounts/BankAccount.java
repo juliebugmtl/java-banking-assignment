@@ -100,6 +100,7 @@ public abstract class BankAccount {
         calculateInterest();
         BankBean reportBean = new BankBean();
         reportBean.setCurrentBalance(money.getCurrentBalance());
+        
         // copy every field
         // make a copy of the bean
 
@@ -112,18 +113,9 @@ public abstract class BankAccount {
    
         // reset
         
-//        money.currentBalance = money.getCurrentBalance();
-//        money.totalDeposits = BigDecimal.ZERO;
-//        money.numberOfDeposits = 0;
-//        money.totalWithdrawals = BigDecimal.ZERO;
-//        money.numberOfWithdrawals = 0;
-//        money.annualInterestRate = annualInterestRate;
-//        money.serviceCharge = BigDecimal.ZERO;
-//        money.status = startingBalance.compareTo(new BigDecimal("25.0")) != -1;
-
+        BankBean BankBean = new BankBean();
         
         return reportBean;  // the copy
-
 
     }    
 
