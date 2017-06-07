@@ -116,7 +116,7 @@ public abstract class BankAccount {
         reportBean.setNumberOfWithdrawals(money.getNumberOfWithdrawals());
         reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
         reportBean.setServiceCharge(money.getServiceCharge());
-   
+    
         // reset
         
 //        money.currentBalance = money.getCurrentBalance();
