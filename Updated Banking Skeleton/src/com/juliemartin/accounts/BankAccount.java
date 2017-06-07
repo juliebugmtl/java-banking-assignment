@@ -101,12 +101,31 @@ public abstract class BankAccount {
         BankBean reportBean = new BankBean();
         reportBean.setCurrentBalance(money.getCurrentBalance());
         // copy every field
-
         // make a copy of the bean
+
+        reportBean.setTotalDeposits(money.getTotalDeposits());
+        reportBean.setNumberOfDeposits(money.getNumberOfDeposits());
+        reportBean.setTotalWithdrawals(money.getTotalWithdrawals());
+        reportBean.setNumberOfWithdrawals(money.getNumberOfWithdrawals());
+        reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
+        reportBean.setServiceCharge(money.getServiceCharge());
+   
         // reset
+        
+//        money.currentBalance = money.getCurrentBalance();
+//        money.totalDeposits = BigDecimal.ZERO;
+//        money.numberOfDeposits = 0;
+//        money.totalWithdrawals = BigDecimal.ZERO;
+//        money.numberOfWithdrawals = 0;
+//        money.annualInterestRate = annualInterestRate;
+//        money.serviceCharge = BigDecimal.ZERO;
+//        money.status = startingBalance.compareTo(new BigDecimal("25.0")) != -1;
+
+        
         return reportBean;  // the copy
 
-    }
+
+    }    
 
     /**
      *
