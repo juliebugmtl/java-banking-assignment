@@ -82,11 +82,11 @@ public class test {
 
    public void perform() {
         
-        testCheckingDeposit();
+        //testCheckingDeposit();
         //testCheckingWithdraw();
         //testCheckingOverdrawn();
         //testLotsOfChecking();
-        //testSavingsDeposit();
+        testSavingsDeposit();
         //testSavingsWithdrawInactive();
         //testSavingsWithdraw();
              

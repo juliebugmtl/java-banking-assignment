@@ -41,11 +41,9 @@ public class TheBank {
         
         Scanner sc = new Scanner(System.in);
         
-        System.out.println("doSavingsDeposit");
-        
         double in = -1.0;
             do {
-                System.out.print("Please enter amount of deposit: ");
+                System.out.print("Please enter amount of deposit: $");
                 if (sc.hasNext("\\d*\\.?\\d*") ) {
                     in = sc.nextDouble();
                 }
@@ -66,7 +64,32 @@ public class TheBank {
      *
      */
     public void doSavingsWithdrawal() {
+        
+        // ask for the value
+        // ask the user for input
+        
+        Scanner sc = new Scanner(System.in);
+        
         System.out.println("doSavingsWithdrawal");
+        
+        double in = -1.0;
+            do {
+                System.out.print("Please enter amount of withdrawal: ");
+                if (sc.hasNext("\\d*\\.?\\d*") ) {
+                    in = sc.nextDouble();
+                }
+                if (in == -1.0) {
+                    System.out.println("Invalid input.");
+                }
+                sc.nextLine();
+            } while (in == -1.0);
+        
+            BigDecimal temp1 = new BigDecimal(in);
+            BigDecimal withdrawal = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            System.out.println("input " + withdrawal);
+        
+        savings.withdrawal(withdrawal);
+        
     }
 
     /**
@@ -75,6 +98,7 @@ public class TheBank {
      */
     public BankBean doSavingsReport() {
         // Monthly Report
+        
         return savings.doMonthlyReport();
     }
 
