@@ -99,11 +99,11 @@ public abstract class BankAccount {
         // calculate the interest
         calculateInterest();
         BankBean reportBean = new BankBean();
-        reportBean.setCurrentBalance(money.getCurrentBalance());
+        
         
         // copy every field
         // make a copy of the bean
-
+        reportBean.setCurrentBalance(money.getCurrentBalance());
         reportBean.setTotalDeposits(money.getTotalDeposits());
         reportBean.setNumberOfDeposits(money.getNumberOfDeposits());
         reportBean.setTotalWithdrawals(money.getTotalWithdrawals());
