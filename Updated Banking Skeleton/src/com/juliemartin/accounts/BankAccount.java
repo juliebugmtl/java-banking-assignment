@@ -33,11 +33,19 @@ public abstract class BankAccount {
         // add to the total for deposits
         // add to the counter/number of deposits
         
+        System.out.println("DEPOSIT: " + deposit);
+        
         BigDecimal temp1 = money.getCurrentBalance();
+        
+        System.out.println("CURRENT BALANCE: " + temp1);
+        
         BigDecimal temp2 = money.getTotalDeposits();
         int temp3 = money.getNumberOfDeposits();
 
         money.setCurrentBalance(temp1.add(deposit));
+        
+        System.out.println("CURRENT BALANCE + DEPOSIT: " + temp1.add(deposit));
+        
         money.setTotalDeposits(temp2.add(deposit));
         money.setNumberOfDeposits(temp3 + 1);
     }
@@ -99,10 +107,9 @@ public abstract class BankAccount {
         // calculate the interest
         calculateInterest();
         BankBean reportBean = new BankBean();
-        reportBean.setCurrentBalance(money.getCurrentBalance());
         // copy every field
         // make a copy of the bean
-
+        reportBean.setCurrentBalance(money.getCurrentBalance());
         reportBean.setTotalDeposits(money.getTotalDeposits());
         reportBean.setNumberOfDeposits(money.getNumberOfDeposits());
         reportBean.setTotalWithdrawals(money.getTotalWithdrawals());

@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * This class creates menus and accepts the user's choice
  *
- * @author Your Name
+ * @author Julie Martin
  * @version 0.1
  */
 public class Menus {

@@ -25,12 +25,12 @@ public class SavingsAccount extends BankAccount {
      *
      * @param deposit
      */
-    @Override
-    public void makeDeposit(BigDecimal deposit) {
-        
-        super.makeDeposit(deposit);
-
-    }
+//    @Override
+//    public void makeDeposit(BigDecimal deposit) {
+//        
+//        super.makeDeposit(deposit);
+//
+//    }
 
     /**
      *
@@ -44,12 +44,21 @@ public class SavingsAccount extends BankAccount {
         BigDecimal temp1 = money.getCurrentBalance();
         BigDecimal temp2 = new BigDecimal(25.0);
         
+        // Check if withdrawal will overdraw account
+        BigDecimal temp3 = temp1.subtract(withdrawal);
+                
+        if (temp3.compareTo(BigDecimal.ZERO) < 0 ) {
+            
+            System.out.println("Cannot withdraw, your account would be overdrawn.");
+            
+        } else {
+        
+        
         // Create active conditions where 0 is equal, 1 is first value is greater, -1 is second value is greater
         int active;
         active = temp1.compareTo(temp2);
         
         // If logic for account activity
-        
         switch(active) {
             
             case 0 :
@@ -62,11 +71,11 @@ public class SavingsAccount extends BankAccount {
                 System.out.println("Cannot withdraw, account is inactive.");
                 break;
         }
-
-        // Should go back to menu?   
+        
         return false;
     }
-
+        return true;
+    }
     /**
      *
      * @return
@@ -107,14 +116,22 @@ public class SavingsAccount extends BankAccount {
         
         // Rounding
         
-        BigDecimal temp7 = new BigDecimal(temp3);
-        BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+//        BigDecimal temp7 = new BigDecimal(temp3);
+        BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
         
         // Set new balance        
         money.setCurrentBalance(temp8);
         }
                 
-        BankBean reportBean = super.doMonthlyReport();
+        BankBean reportBean = new BankBean();
+        reportBean.setStartingBalance(money.getStartingBalance());
+        reportBean.setCurrentBalance(money.getCurrentBalance());
+        reportBean.setTotalDeposits(money.getTotalDeposits());
+        reportBean.setNumberOfDeposits(money.getNumberOfDeposits());
+        reportBean.setTotalWithdrawals(money.getTotalWithdrawals());
+        reportBean.setNumberOfWithdrawals(money.getNumberOfWithdrawals());
+        reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
+        reportBean.setServiceCharge(money.getServiceCharge());
         return reportBean;
 
     }
