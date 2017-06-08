@@ -92,39 +92,49 @@ public class SavingsAccount extends BankAccount {
         // Get the current balance
         BigDecimal temp1 = money.getCurrentBalance();
         
-        // Get the number of withdrawals, check if over 4 and, if so, add fees
+        // Get the number of withdrawals
         int temp3 = money.getNumberOfWithdrawals();
         int temp4 = temp3 - 4;
-        int temp5 = temp4 * 1;
-        
-        // Convert to BigDecimal because Math        
-        BigDecimal temp6 = new BigDecimal(temp5);
-        
-        if (0 < temp4) {
-            
-            // Subtract withdrawal fees
-            BigDecimal temp7 = temp1.subtract(temp6);
-            
-            // Round and set service charge
-            BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-            money.setServiceCharge(temp8);
-            
-            // Rounding balance
-            BigDecimal temp9 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-            
-            // Set new balance
-            money.setCurrentBalance(temp9);
-            
-        } else {
-        
-        // Rounding
-        
-        BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-        
-        // Set new balance        
-        money.setCurrentBalance(temp8);
-        }
                 
+        // Convert to BigDecimal because Math        
+        BigDecimal temp5 = new BigDecimal(temp4);
+        
+        // Withdrawal fee loop
+            for (int fees = 0; fees <= 2; fees++)    {
+        
+                if (0 < temp4) { // THIS keeps repeating because the value is always true if it was true once. REWORK LOGIC.
+
+                    // Subtract withdrawal fees
+                    BigDecimal temp6 = temp1.subtract(temp5);
+
+                    // Round and set service charge
+                    BigDecimal temp7 = temp5.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                    money.setServiceCharge(temp7);
+
+                    // Rounding balance
+                    BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+
+                    // Set new balance
+                    money.setCurrentBalance(temp8);
+                    
+                    System.out.println("FEES IN IF: " + fees);
+                                
+                    break;
+
+                } else {
+
+                // Rounding
+                BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+
+                // Set new balance        
+                money.setCurrentBalance(temp8);
+
+                System.out.println("FEES IN ELSE: " + fees);
+            
+                break;
+                }
+
+            }
         
          BankBean reportBean = new BankBean();
          reportBean.setStartingBalance(money.getStartingBalance());
