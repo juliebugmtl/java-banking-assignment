@@ -100,48 +100,43 @@ public class SavingsAccount extends BankAccount {
         boolean addedFees = false;
             
             do { 
-            
                 boolean feesAdded = false;
-
                 if (!addedFees) {
-                
-                feesAdded = true;
-            }
-            
-            do {
+                    do {
 
-                if (0 < temp4 && !feesAdded) {
-                    // Subtract withdrawal fees
-                    BigDecimal temp6 = temp1.subtract(temp5);
+                        if (0 < temp4 && !feesAdded) {
+                            // Subtract withdrawal fees
+                            BigDecimal temp6 = temp1.subtract(temp5);
 
-                    // Round and set service charge
-                    BigDecimal temp7 = temp5.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-                    money.setServiceCharge(temp7);
+                            // Round and set service charge
+                            BigDecimal temp7 = temp5.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                            money.setServiceCharge(temp7);
 
-                    // Rounding balance
-                    BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                            // Rounding balance
+                            BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
-                    // Set new balance
-                    money.setCurrentBalance(temp8);
+                            // Set new balance
+                            money.setCurrentBalance(temp8);
 
-                    
-                    System.out.println("Status of feesAdded? " + feesAdded);
+                            feesAdded = true;
+                            addedFees = true;
 
-                 } else {
+                            System.out.println("Status of feesAdded? " + feesAdded);
 
-                    // Rounding
-                    BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                         } else {
 
-                    // Set new balance        
-                    money.setCurrentBalance(temp8);
+                            // Rounding
+                            BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
-                    System.out.println("Status of feesAdded? " + feesAdded);
-                }
-            } while(feesAdded = false);
-                
-                
-        
-        
+                            // Set new balance        
+                            money.setCurrentBalance(temp8);
+
+                            System.out.println("Status of feesAdded? " + feesAdded);
+                        }
+                    } while (feesAdded = false);
+                } 
+            } while (addedFees = false);
+
         // Withdrawal fee loop
 //            for (int fees = 0; fees <= 2; fees++)    {
 //        
