@@ -41,8 +41,6 @@ public class TheBank {
         
         Scanner sc = new Scanner(System.in);
         
-        System.out.println("doSavingsDeposit");
-        
         double in = -1.0;
             do {
                 System.out.print("Please enter amount of deposit: $");
