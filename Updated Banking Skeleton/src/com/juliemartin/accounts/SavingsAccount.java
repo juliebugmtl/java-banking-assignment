@@ -181,18 +181,10 @@ public class SavingsAccount extends BankAccount {
                     money.setCurrentBalance(temp8);
                     
                 }
-
-         BankBean reportBean = new BankBean();
-         reportBean.setStartingBalance(money.getStartingBalance());
-         reportBean.setCurrentBalance(money.getCurrentBalance());
-         reportBean.setTotalDeposits(money.getTotalDeposits());
-         reportBean.setNumberOfDeposits(money.getNumberOfDeposits());
-         reportBean.setTotalWithdrawals(money.getTotalWithdrawals());
-         reportBean.setNumberOfWithdrawals(money.getNumberOfWithdrawals());
-         reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
-         reportBean.setServiceCharge(money.getServiceCharge());
-        
-        return reportBean;
+                
+         super.calculateInterest();
+         BankBean reportBean = super.doMonthlyReport();
+         return reportBean;       
 
     }
     

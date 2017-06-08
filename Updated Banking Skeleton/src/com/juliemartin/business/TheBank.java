@@ -104,14 +104,56 @@ public class TheBank {
      *
      */
     public void doCheckingDeposit() {
-        System.out.println("Still to be done. - doCheckingDeposit");
+                // ask for the value
+        // ask the user for input
+        
+        Scanner sc = new Scanner(System.in);
+        
+        double in = -1.0;
+            do {
+                System.out.print("Please enter amount of deposit: $");
+                if (sc.hasNext("\\d*\\.?\\d*") ) {
+                    in = sc.nextDouble();
+                }
+                if (in == -1.0) {
+                    System.out.println("Invalid input.");
+                }
+                sc.nextLine();
+            } while (in == -1.0);
+        
+            BigDecimal temp1 = new BigDecimal(in);
+            BigDecimal deposit = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            System.out.println("Depost: $" + deposit);
+        
+        checking.makeDeposit(deposit);
     }
 
     /**
      *
      */
     public void doCheckingWithdrawal() {
-        System.out.println("Still to be done. - doCheckingWithdrawal");
+                 // ask for the value
+         // ask the user for input
+         
+         Scanner sc = new Scanner(System.in);
+         
+         double in = -1.0;
+             do {
+                 System.out.print("Please enter amount of withdrawal: $");
+                 if (sc.hasNext("\\d*\\.?\\d*") ) {
+                     in = sc.nextDouble();
+                 }
+                 if (in == -1.0) {
+                     System.out.println("Invalid input.");
+                 }
+                 sc.nextLine();
+             } while (in == -1.0);
+         
+             BigDecimal temp1 = new BigDecimal(in);
+             BigDecimal withdrawal = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+             System.out.println("Withdrawal: $ " + withdrawal);
+         
+         checking.withdrawal(withdrawal);
     }
 
     /**
