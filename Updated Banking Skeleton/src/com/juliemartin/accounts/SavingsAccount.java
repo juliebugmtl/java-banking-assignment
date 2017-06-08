@@ -63,19 +63,18 @@ public class SavingsAccount extends BankAccount {
         switch(active) {
             
             case 0 :
-                super.withdrawal(withdrawal);
+                super.withdrawal(withdrawal); // account is active, proceed with withdrawal
                 break;
             case 1 :
-                super.withdrawal(withdrawal);
+                super.withdrawal(withdrawal); // account is active, proceed with withdrawal
                 break;
             case -1: 
-                System.out.println("Cannot withdraw, account is inactive.");
+                System.out.println("Cannot withdraw, account is inactive."); // account is inactive, stop transaction
                 break;
         }
 
-        // Should go back to menu?   
-        return false;
-    }
+            return false;
+        }
     return true;
     }
 
@@ -86,9 +85,6 @@ public class SavingsAccount extends BankAccount {
     @Override
     public BankBean doMonthlyReport() {
         
-        // Service Charge for withdrawals above 4 specified
-        BigDecimal sc = new BigDecimal(1.0);
-                
         // Get the current balance
         BigDecimal temp1 = money.getCurrentBalance();
         
@@ -99,11 +95,22 @@ public class SavingsAccount extends BankAccount {
         // Convert to BigDecimal because Math        
         BigDecimal temp5 = new BigDecimal(temp4);
         
-        // Withdrawal fee loop
-            for (int fees = 0; fees <= 2; fees++)    {
+        // Logic to see if withdrawal fees have already been applied
         
-                if (0 < temp4) { // THIS keeps repeating because the value is always true if it was true once. REWORK LOGIC.
+        boolean addedFees = false;
+            
+            do { 
+            
+                boolean feesAdded = false;
 
+                if (!addedFees) {
+                
+                feesAdded = true;
+            }
+            
+            do {
+
+                if (0 < temp4 && !feesAdded) {
                     // Subtract withdrawal fees
                     BigDecimal temp6 = temp1.subtract(temp5);
 
@@ -116,25 +123,61 @@ public class SavingsAccount extends BankAccount {
 
                     // Set new balance
                     money.setCurrentBalance(temp8);
+
                     
-                    System.out.println("FEES IN IF: " + fees);
-                                
-                    break;
+                    System.out.println("Status of feesAdded? " + feesAdded);
 
-                } else {
+                 } else {
 
-                // Rounding
-                BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                    // Rounding
+                    BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
-                // Set new balance        
-                money.setCurrentBalance(temp8);
+                    // Set new balance        
+                    money.setCurrentBalance(temp8);
 
-                System.out.println("FEES IN ELSE: " + fees);
-            
-                break;
+                    System.out.println("Status of feesAdded? " + feesAdded);
                 }
-
-            }
+            } while(feesAdded = false);
+                
+                
+        
+        
+        // Withdrawal fee loop
+//            for (int fees = 0; fees <= 2; fees++)    {
+//        
+//                if (0 < temp4) { // THIS keeps repeating because the value is always true if it was true once. REWORK LOGIC.
+//
+//                    // Subtract withdrawal fees
+//                    BigDecimal temp6 = temp1.subtract(temp5);
+//
+//                    // Round and set service charge
+//                    BigDecimal temp7 = temp5.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+//                    money.setServiceCharge(temp7);
+//
+//                    // Rounding balance
+//                    BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+//
+//                    // Set new balance
+//                    money.setCurrentBalance(temp8);
+//                    
+//                    System.out.println("FEES IN IF: " + fees);
+//                                
+//                    break;
+//
+//                } else {
+//
+//                // Rounding
+//                BigDecimal temp8 = temp1.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+//
+//                // Set new balance        
+//                money.setCurrentBalance(temp8);
+//
+//                System.out.println("FEES IN ELSE: " + fees);
+//            
+//                break;
+//                }
+//
+//            }
         
          BankBean reportBean = new BankBean();
          reportBean.setStartingBalance(money.getStartingBalance());
