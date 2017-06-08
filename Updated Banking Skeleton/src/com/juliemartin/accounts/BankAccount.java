@@ -100,9 +100,9 @@ public abstract class BankAccount {
         calculateInterest();
         BankBean reportBean = new BankBean();
         
-        
         // copy every field
         // make a copy of the bean
+        reportBean.setStartingBalance(money.getStartingBalance());
         reportBean.setCurrentBalance(money.getCurrentBalance());
         reportBean.setTotalDeposits(money.getTotalDeposits());
         reportBean.setNumberOfDeposits(money.getNumberOfDeposits());
@@ -111,10 +111,6 @@ public abstract class BankAccount {
         reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
         reportBean.setServiceCharge(money.getServiceCharge());
    
-        // reset
-        
-        BankBean BankBean = new BankBean();
-        
         return reportBean;  // the copy
 
     }    
@@ -123,7 +119,7 @@ public abstract class BankAccount {
      *
      */
     void reset() {
-        // reset the values at the end of the month for money
+                BankBean BankBean = new BankBean();
     }
 
 }

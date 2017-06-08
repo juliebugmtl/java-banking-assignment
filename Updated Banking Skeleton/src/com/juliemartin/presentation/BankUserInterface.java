@@ -1,6 +1,5 @@
 package com.juliemartin.presentation;
 
-import com.juliemartin.accounts.BankAccount;
 import com.juliemartin.bean.BankBean;
 import com.juliemartin.business.TheBank;
 import com.juliemartin.menus.Menus;
