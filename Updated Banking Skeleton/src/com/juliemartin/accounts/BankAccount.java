@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 public abstract class BankAccount {
 
-    // protected so that the subclasses can acces it directly
+    // protected so that the subclasses can access it directly
     protected BankBean money;
 
     /**
@@ -50,7 +50,7 @@ public abstract class BankAccount {
     public boolean withdrawal(BigDecimal withdrawal) {
         // subtract from the current balance
         // add to the total for withdrawals
-        // add to the counter/number of deposits
+        // add to the counter/number of withdrawals
         
         BigDecimal temp1 = money.getCurrentBalance();
         BigDecimal temp2 = money.getTotalWithdrawals();
@@ -110,6 +110,7 @@ public abstract class BankAccount {
         reportBean.setNumberOfWithdrawals(money.getNumberOfWithdrawals());
         reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
         reportBean.setServiceCharge(money.getServiceCharge());
+        reportBean.setStatus(money.getStatus());
    
         return reportBean;  // the copy
 

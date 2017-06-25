@@ -155,7 +155,7 @@ public class SavingsAccount extends BankAccount {
         // Convert to BigDecimal because Math        
         BigDecimal temp5 = new BigDecimal(temp4);
                 
-                if (0 < temp4 && !addedFees) { // THIS keeps repeating because the value is always true if it was true once. REWORK LOGIC.
+                if (0 < temp4 && !addedFees) { // Fixed repeating logic by defining addedFees as false earlier on and marking as true within
 
                     // Subtract withdrawal fees
                     BigDecimal temp6 = temp1.subtract(temp5);
