@@ -47,6 +47,7 @@ public class BankBean {
         this.numberOfWithdrawals = 0;
         this.annualInterestRate = annualInterestRate;
         this.accruedInterest = BigDecimal.ZERO;
+        this.penaltyCharge = BigDecimal.ZERO;
         this.serviceCharge = BigDecimal.ZERO;
         this.status = startingBalance.compareTo(new BigDecimal("25.0")) != -1;
     }
@@ -147,7 +148,12 @@ public class BankBean {
      */
     @Override
     public String toString() {
-        return "BankBean{" + "startingBalance=" + startingBalance.toString() + ", currentBalance=" + currentBalance.toString() + ", totalDeposits=" + totalDeposits + ", numberOfDeposits=" + numberOfDeposits + ", totalWithdrawals=" + totalWithdrawals.toString() + ", numberOfWithdrawals=" + numberOfWithdrawals + ", annualInterestRate=" + annualInterestRate.toString() + ", penaltyCharge=" + penaltyCharge.toString() + ", serviceCharge=" + serviceCharge.toString() + ", status=" + status + '}';
+        return "BankBean{" + "startingBalance=" + startingBalance.toString() + ", currentBalance=" + currentBalance.toString() + ", totalDeposits=" + totalDeposits +
+        ", numberOfDeposits=" + numberOfDeposits + ", totalWithdrawals=" + totalWithdrawals.toString() + ", numberOfWithdrawals=" + numberOfWithdrawals +
+        ", annualInterestRate=" + annualInterestRate.toString() +
+        ", accruedInterest=" + accruedInterest.toString() +
+        ", penaltyCharge=" + penaltyCharge.toString() +
+        ", serviceCharge=" + serviceCharge.toString() + ", status=" + status + "}";
     }
 
 }

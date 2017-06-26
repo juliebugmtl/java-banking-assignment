@@ -109,6 +109,8 @@ public abstract class BankAccount {
         reportBean.setTotalWithdrawals(money.getTotalWithdrawals());
         reportBean.setNumberOfWithdrawals(money.getNumberOfWithdrawals());
         reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
+        reportBean.setAccruedInterest(money.getAccruedInterest());
+        reportBean.setPenaltyCharge(money.getPenaltyCharge());
         reportBean.setServiceCharge(money.getServiceCharge());
         reportBean.setStatus(money.getStatus());
    
@@ -120,7 +122,14 @@ public abstract class BankAccount {
      *
      */
     void reset() {
-                BankBean BankBean = new BankBean();
+                BankBean money = new BankBean();
+                money.setStartingBalance(money.getCurrentBalance());
+                money.setNumberOfDeposits(0);
+                money.setNumberOfWithdrawals(0);
+                money.setAccruedInterest(BigDecimal.ZERO);
+                money.setPenaltyCharge(BigDecimal.ZERO);
+                money.setServiceCharge(BigDecimal.ZERO);
+                
     }
 
 }

@@ -124,12 +124,15 @@ public class SavingsAccount extends BankAccount {
             
             case 0 :
                 super.withdrawal(withdrawal); // account is active, proceed with withdrawal
+                money.setStatus(false);
                 break;
             case 1 :
                 super.withdrawal(withdrawal); // account is active, proceed with withdrawal
+                money.setStatus(false);
                 break;
             case -1: 
                 System.out.println("Cannot withdraw, account is inactive."); // account is inactive, stop transaction
+                money.setStatus(true);
                 break;
         }
 
@@ -182,7 +185,6 @@ public class SavingsAccount extends BankAccount {
                     
                 }
                 
-         super.calculateInterest();
          BankBean reportBean = super.doMonthlyReport();
          return reportBean;       
 

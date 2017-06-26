@@ -34,16 +34,18 @@ public class CheckingAccount extends BankAccount {
         // Set penalty fee
         BigDecimal penalty = (new BigDecimal("15.0"));
 
-        // do checking stuff
-        
+        // Check if there are sufficient funds
         BigDecimal temp1 = money.getCurrentBalance();
         BigDecimal temp2 = withdrawal;
         BigDecimal temp3 = temp1.subtract(temp2);
         
         if (temp3.compareTo(BigDecimal.ZERO) < 0){
             
-        money.setCurrentBalance(temp1.subtract(penalty));    
-            
+        // If NSF, halt transaction, add penalty charge    
+        money.setCurrentBalance(temp1.subtract(penalty));
+        money.setPenaltyCharge(penalty);
+        System.out.println("Cannot withdraw, insufficient funds.");
+                    
         } else {
         
         // subtract from the current balance
@@ -82,16 +84,18 @@ public class CheckingAccount extends BankAccount {
         
         // Subtract service charge
         BigDecimal temp6 = temp1.subtract(sc);
+        System.out.println("Monthly service charge: " + sc.setScale(2, BigDecimal.ROUND_HALF_EVEN));
         
         // Subtract withdrawal fees
         BigDecimal temp7 = temp6.subtract(temp5);
+        System.out.println("Withdrawal fees: " + temp5.setScale(2, BigDecimal.ROUND_HALF_EVEN));
         
         // Rounding
         BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
         
         // Set new balance        
         money.setCurrentBalance(temp8);
-        super.calculateInterest();
+        //super.calculateInterest();
         BankBean reportBean = super.doMonthlyReport();
         return reportBean;
 
