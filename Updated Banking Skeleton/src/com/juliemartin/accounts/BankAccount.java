@@ -82,6 +82,9 @@ public abstract class BankAccount {
         
         // Add monthly interest to balance
         BigDecimal temp4 = temp2.add(temp3);
+        
+        // Add monthly interest to accruedInterest
+        money.setAccruedInterest(temp3.setScale(2, BigDecimal.ROUND_HALF_EVEN));
               
         // Rounding
         BigDecimal temp5 = temp4.setScale(2, BigDecimal.ROUND_HALF_EVEN);
@@ -121,8 +124,7 @@ public abstract class BankAccount {
     /**
      *
      */
-    void reset() {
-                BankBean money = new BankBean();
+    public void reset() {
                 money.setStartingBalance(money.getCurrentBalance());
                 money.setNumberOfDeposits(0);
                 money.setNumberOfWithdrawals(0);

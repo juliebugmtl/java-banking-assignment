@@ -84,18 +84,20 @@ public class CheckingAccount extends BankAccount {
         
         // Subtract service charge
         BigDecimal temp6 = temp1.subtract(sc);
-        System.out.println("Monthly service charge: " + sc.setScale(2, BigDecimal.ROUND_HALF_EVEN));
+        System.out.println("Monthly service charge: $" + sc.setScale(2, BigDecimal.ROUND_HALF_EVEN));
+        
+        // Set service charge to show up in monthly report
+        money.setServiceCharge(sc);
         
         // Subtract withdrawal fees
         BigDecimal temp7 = temp6.subtract(temp5);
-        System.out.println("Withdrawal fees: " + temp5.setScale(2, BigDecimal.ROUND_HALF_EVEN));
+        System.out.println("Withdrawal fees: $" + temp5.setScale(2, BigDecimal.ROUND_HALF_EVEN));
         
         // Rounding
         BigDecimal temp8 = temp7.setScale(2, BigDecimal.ROUND_HALF_EVEN);
         
         // Set new balance        
         money.setCurrentBalance(temp8);
-        //super.calculateInterest();
         BankBean reportBean = super.doMonthlyReport();
         return reportBean;
 

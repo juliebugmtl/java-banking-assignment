@@ -45,6 +45,7 @@ public class test {
         ca.withdrawal(new BigDecimal("15.0"));
         ca.withdrawal(new BigDecimal("15.0"));
         ca.withdrawal(new BigDecimal("15.0"));
+        ca.reset();
         ca.doMonthlyReport();
         System.out.println(ca.toString());
         
@@ -54,6 +55,8 @@ public class test {
         
         SavingsAccount sa = new SavingsAccount(new BigDecimal("50.0"), new BigDecimal ("0.05"));
         sa.makeDeposit(new BigDecimal("10.0"));
+        sa.reset();
+        sa.doMonthlyReport();
         System.out.println(sa.toString());
         
     }
@@ -85,8 +88,8 @@ public class test {
         //testCheckingDeposit();
         //testCheckingWithdraw();
         //testCheckingOverdrawn();
-        //testLotsOfChecking();
-        testSavingsDeposit();
+        testLotsOfChecking();
+        //testSavingsDeposit();
         //testSavingsWithdrawInactive();
         //testSavingsWithdraw();
              

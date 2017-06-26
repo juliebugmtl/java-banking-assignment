@@ -168,10 +168,10 @@ public class SavingsAccount extends BankAccount {
                     money.setServiceCharge(temp7);
 
                     // Rounding balance
-                    BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                    BigDecimal temp10 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
                     // Set new balance
-                    money.setCurrentBalance(temp8);
+                    money.setCurrentBalance(temp10);
                     
                     addedFees = true;
                                 
