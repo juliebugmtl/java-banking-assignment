@@ -124,12 +124,15 @@ public class SavingsAccount extends BankAccount {
             
             case 0 :
                 super.withdrawal(withdrawal); // account is active, proceed with withdrawal
+                money.setStatus(false);
                 break;
             case 1 :
                 super.withdrawal(withdrawal); // account is active, proceed with withdrawal
+                money.setStatus(false);
                 break;
             case -1: 
                 System.out.println("Cannot withdraw, account is inactive."); // account is inactive, stop transaction
+                money.setStatus(true);
                 break;
         }
 
@@ -155,7 +158,7 @@ public class SavingsAccount extends BankAccount {
         // Convert to BigDecimal because Math        
         BigDecimal temp5 = new BigDecimal(temp4);
                 
-                if (0 < temp4 && !addedFees) { // THIS keeps repeating because the value is always true if it was true once. REWORK LOGIC.
+                if (0 < temp4 && !addedFees) { // Fixed repeating logic by defining addedFees as false earlier on and marking as true within
 
                     // Subtract withdrawal fees
                     BigDecimal temp6 = temp1.subtract(temp5);
@@ -165,10 +168,10 @@ public class SavingsAccount extends BankAccount {
                     money.setServiceCharge(temp7);
 
                     // Rounding balance
-                    BigDecimal temp8 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+                    BigDecimal temp10 = temp6.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
                     // Set new balance
-                    money.setCurrentBalance(temp8);
+                    money.setCurrentBalance(temp10);
                     
                     addedFees = true;
                                 
@@ -182,7 +185,6 @@ public class SavingsAccount extends BankAccount {
                     
                 }
                 
-         super.calculateInterest();
          BankBean reportBean = super.doMonthlyReport();
          return reportBean;       
 

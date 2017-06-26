@@ -17,6 +17,8 @@ public class BankBean {
     private BigDecimal totalWithdrawals;
     private int numberOfWithdrawals;
     private BigDecimal annualInterestRate;
+    private BigDecimal accruedInterest;
+    private BigDecimal penaltyCharge;
     private BigDecimal serviceCharge;
     private boolean status;
 
@@ -44,6 +46,8 @@ public class BankBean {
         this.totalWithdrawals = BigDecimal.ZERO;
         this.numberOfWithdrawals = 0;
         this.annualInterestRate = annualInterestRate;
+        this.accruedInterest = BigDecimal.ZERO;
+        this.penaltyCharge = BigDecimal.ZERO;
         this.serviceCharge = BigDecimal.ZERO;
         this.status = startingBalance.compareTo(new BigDecimal("25.0")) != -1;
     }
@@ -104,6 +108,22 @@ public class BankBean {
         this.annualInterestRate = annualInterestRate;
     }
 
+    public BigDecimal getAccruedInterest () {
+        return accruedInterest;
+    }
+    
+    public void setAccruedInterest (BigDecimal accruedInterest) {
+        this.accruedInterest = accruedInterest;
+    }
+    
+    public BigDecimal getPenaltyCharge() {
+        return penaltyCharge;
+    }
+    
+    public void setPenaltyCharge(BigDecimal penaltyCharge) {
+        this.penaltyCharge = penaltyCharge;
+    }
+    
     public BigDecimal getServiceCharge() {
         return serviceCharge;
     }
@@ -112,7 +132,7 @@ public class BankBean {
         this.serviceCharge = serviceCharge;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -128,7 +148,12 @@ public class BankBean {
      */
     @Override
     public String toString() {
-        return "BankBean{" + "startingBalance=" + startingBalance.toString() + ", currentBalance=" + currentBalance.toString() + ", totalDeposits=" + totalDeposits + ", numberOfDeposits=" + numberOfDeposits + ", totalWithdrawals=" + totalWithdrawals.toString() + ", numberOfWithdrawals=" + numberOfWithdrawals + ", annualInterestRate=" + annualInterestRate.toString() + ", serviceCharge=" + serviceCharge.toString() + ", status=" + status + '}';
+        return "BankBean{" + "startingBalance=" + startingBalance.toString() + ", currentBalance=" + currentBalance.toString() + ", totalDeposits=" + totalDeposits +
+        ", numberOfDeposits=" + numberOfDeposits + ", totalWithdrawals=" + totalWithdrawals.toString() + ", numberOfWithdrawals=" + numberOfWithdrawals +
+        ", annualInterestRate=" + annualInterestRate.toString() +
+        ", accruedInterest=" + accruedInterest.toString() +
+        ", penaltyCharge=" + penaltyCharge.toString() +
+        ", serviceCharge=" + serviceCharge.toString() + ", status=" + status + "}";
     }
 
 }

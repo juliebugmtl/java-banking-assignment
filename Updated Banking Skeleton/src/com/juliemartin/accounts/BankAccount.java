@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 public abstract class BankAccount {
 
-    // protected so that the subclasses can acces it directly
+    // protected so that the subclasses can access it directly
     protected BankBean money;
 
     /**
@@ -50,7 +50,7 @@ public abstract class BankAccount {
     public boolean withdrawal(BigDecimal withdrawal) {
         // subtract from the current balance
         // add to the total for withdrawals
-        // add to the counter/number of deposits
+        // add to the counter/number of withdrawals
         
         BigDecimal temp1 = money.getCurrentBalance();
         BigDecimal temp2 = money.getTotalWithdrawals();
@@ -82,6 +82,9 @@ public abstract class BankAccount {
         
         // Add monthly interest to balance
         BigDecimal temp4 = temp2.add(temp3);
+        
+        // Add monthly interest to accruedInterest
+        money.setAccruedInterest(temp3.setScale(2, BigDecimal.ROUND_HALF_EVEN));
               
         // Rounding
         BigDecimal temp5 = temp4.setScale(2, BigDecimal.ROUND_HALF_EVEN);
@@ -109,7 +112,10 @@ public abstract class BankAccount {
         reportBean.setTotalWithdrawals(money.getTotalWithdrawals());
         reportBean.setNumberOfWithdrawals(money.getNumberOfWithdrawals());
         reportBean.setAnnualInterestRate(money.getAnnualInterestRate());
+        reportBean.setAccruedInterest(money.getAccruedInterest());
+        reportBean.setPenaltyCharge(money.getPenaltyCharge());
         reportBean.setServiceCharge(money.getServiceCharge());
+        reportBean.setStatus(money.getStatus());
    
         return reportBean;  // the copy
 
@@ -118,8 +124,14 @@ public abstract class BankAccount {
     /**
      *
      */
-    void reset() {
-                BankBean BankBean = new BankBean();
+    public void reset() {
+                money.setStartingBalance(money.getCurrentBalance());
+                money.setNumberOfDeposits(0);
+                money.setNumberOfWithdrawals(0);
+                money.setAccruedInterest(BigDecimal.ZERO);
+                money.setPenaltyCharge(BigDecimal.ZERO);
+                money.setServiceCharge(BigDecimal.ZERO);
+                
     }
 
 }
